@@ -2,19 +2,38 @@ package main
 
 import "fmt"
 
-const helloPrefix = "Hello"
-const emptyNameGeneric = "World"
+type Lang struct {
+    Greeting string
+    World string
+}
 
-func Hello(name string) string {
+func Hello(name, lang string) string {
+    langMap := getLangMap()
+    langStruct, ok := langMap[lang]
+    if !ok {
+        lang = "english"
+    }
     var toPrint string
     if len(name) == 0 {
-        toPrint = emptyNameGeneric
+        toPrint = langStruct.World
     } else {
         toPrint = name
     }
-    return fmt.Sprintf("%s %s!", helloPrefix, toPrint)
+    return fmt.Sprintf("%s %s!", langStruct.Greeting, toPrint)
 }
 
+func getLangMap() map[string]Lang {
+    langMap := map[string]Lang{
+        "english": Lang{"Hello", "World"},
+        "german": Lang{"Hallo", "Welt"},
+        "greek": Lang{"Geia", "Kosmos"},
+    }
+    return langMap
+}
+
+
+
 func main() {
-    fmt.Println(Hello("Phil"))
+    fmt.Println(Hello("Phil", "english"))
+    fmt.Println(getLangMap())
 }
