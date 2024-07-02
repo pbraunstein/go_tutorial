@@ -1,4 +1,4 @@
-package main
+package hello
 
 import "fmt"
 
@@ -31,9 +31,3 @@ func getLangMap() map[string]Lang {
     return langMap
 }
 
-
-
-func main() {
-    fmt.Println(Hello("Phil", "english"))
-    fmt.Println(getLangMap())
-}
