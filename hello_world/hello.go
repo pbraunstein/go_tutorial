@@ -11,7 +11,7 @@ func Hello(name, lang string) string {
     langMap := getLangMap()
     langStruct, ok := langMap[lang]
     if !ok {
-        lang = "english"
+        langStruct = langMap["english"]
     }
     var toPrint string
     if len(name) == 0 {

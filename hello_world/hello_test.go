@@ -47,5 +47,20 @@ func TestHello(t *testing.T) {
 
         assert.Equal(t, want, got)
     })
+
+    t.Run("Unknown language saying hello to people", func(t *testing.T) {
+        got := Hello("Philip", "spanish")
+        want := "Hello Philip!"
+
+        assert.Equal(t, want, got)
+    })
+
+    t.Run("Unknown language Hello with empty string", func(t *testing.T) {
+        got := Hello("", "spanish")
+        want := "Hello World!"
+
+        assert.Equal(t, want, got)
+    })
+
 }
 
