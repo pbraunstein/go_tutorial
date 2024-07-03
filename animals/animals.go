@@ -1,4 +1,7 @@
 package animals
 
-type Animal struct {
+type Animal interface {
+    Speak() string
+    Eat() string
+    HasThumbs() bool
 }
