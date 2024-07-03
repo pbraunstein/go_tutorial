@@ -30,13 +30,13 @@ func (d Dog) Eat() string {
     return "Bone"
 }
 
-func (h Human) HasThumbs() {
+func (h Human) HasThumbs() bool {
     return true
 }
-func (c Cat) HasThumbs() {
+func (c Cat) HasThumbs() bool {
     return false
 }
-func (d Dog) HasThumbs() {
+func (d Dog) HasThumbs() bool {
     return false
 }
 
