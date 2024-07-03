@@ -14,7 +14,7 @@ func Producter(numbersToProduct ...[]int) []int {
     numResults := len(numbersToProduct)
     products := make([]int, numResults)
 
-    for i, array := range(numbersToProduct) {
+    for i, array := range numbersToProduct {
         products[i] = product(array)
     }
 
