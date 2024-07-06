@@ -7,16 +7,27 @@ import (
     "time"
 )
 
-func Counter(out io.Writer) {
+type Sleeper interface {
+    Sleep(length time.Duration)
+}
+
+type RealSleeper struct {}
+
+func (r *RealSleeper) Sleep(length time.Duration) {
+    time.Sleep(length)
+}
+
+func Counter(out io.Writer, s Sleeper) {
     for i := 1; i < 6; i++ {
         fmt.Fprintf(out, "%d\n", i)
         if  i >= 5 {
             return
         }
-        time.Sleep(time.Duration(i) * time.Second)
+        s.Sleep(time.Duration(i) * time.Second)
     }
 }
 
 func main() {
-    Counter(os.Stdout)
+    rs := RealSleeper{}
+    Counter(os.Stdout, &rs)
 }
