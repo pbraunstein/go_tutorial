@@ -2,12 +2,14 @@ package main
 
 import (
     "fmt"
+    "io"
+    "os"
     "time"
 )
 
-func Counter() {
+func Counter(out io.Writer) {
     for i := 1; i < 6; i++ {
-        fmt.Println(i)
+        fmt.Fprintf(out, "%d\n", i)
         if  i >= 5 {
             return
         }
@@ -16,5 +18,5 @@ func Counter() {
 }
 
 func main() {
-    Counter()
+    Counter(os.Stdout)
 }
