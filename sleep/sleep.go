@@ -1,4 +1,4 @@
-package sleep
+package main
 
 import (
     "fmt"
@@ -7,7 +7,14 @@ import (
 
 func Counter() {
     for i := 1; i < 11; i++ {
-        fmt.Println(1)
-        time.Sleep(1)
+        fmt.Println(i)
+        if  i >= 10 {
+            return
+        }
+        time.Sleep(1 * time.Second)
     }
+}
+
+func main() {
+    Counter()
 }
