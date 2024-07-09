@@ -19,7 +19,25 @@ func SlowFib(n int) int {
     return SlowFib(n - 1) + SlowFib(n - 2)
 }
 
-func CollectFib() map[int]int {
+func CollectFibSerial() map[int]int {
+    toReturn := make(map[int]int)
+    for i := 0; i <= MaxCalc; i++ {
+        toReturn[i] = SlowFib(i)
+    }
+    return toReturn
+}
+
+func CollectFibFast() map[int]int {
+    toReturn := make(map[int]int)
+    toReturn[0] = 0
+    toReturn[1] = 1
+    for i := 2; i <= MaxCalc; i++ {
+        toReturn[i] = toReturn[i - 1] + toReturn[i - 2]
+    }
+    return toReturn
+}
+
+func CollectFibParallel() map[int]int {
     toReturn := make(map[int]int)
     channel := make(chan Result)
     for i := 0; i <= MaxCalc; i++ {
@@ -36,6 +54,6 @@ func CollectFib() map[int]int {
 
 
 func main() {
-    fibMap := CollectFib()
+    fibMap := CollectFibFast()
     fmt.Println(fibMap)
 }
